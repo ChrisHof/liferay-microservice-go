@@ -1,0 +1,15 @@
+assemble:
+  - include:
+      - "go/*"
+microservice-go-oauth-application-user-agent:
+  .serviceAddress: liferay-microservice-go:18080
+  .serviceScheme: http
+  name: Go Microservice OAuth Application User Agent
+  scopes:
+    - Liferay.Headless.Admin.User.everything
+  type: oAuthApplicationUserAgent
+microservice-go-object-action:
+  name: Go Microservice Object Action
+  oAuth2ApplicationExternalReferenceCode: microservice-go-oauth-application-user-agent # Must also be set in environment variable
+  resourcePath: /object-action # Must have same path in go/endpoints.go
+  type: objectAction
